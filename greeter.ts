@@ -164,44 +164,100 @@
 // function add(num1 = '参数默认值', num2: number) {
 //   return `${num1} ${num2}`
 // }
-function add(num1: number, num2: number, ...resetOfNum: number[]) {
-  return num1 + num2 + resetOfNum.reduce((accumulator, currentValue, currentIndex) => accumulator + currentValue)
+// function add(num1: number, num2: number, ...resetOfNum: number[]) {
+//   return num1 + num2 + resetOfNum.reduce((accumulator, currentValue, currentIndex) => accumulator + currentValue)
+// }
+// console.log(add(1, 1, 1, 1, 1))
+
+// let suits = ["hearts", "spades", "clubs", "diamonds"];
+
+// function pickCard(x: {suit: string; card: number; }[]): number;
+// function pickCard(x: number): {suit: string; card: number; };
+// function pickCard(x): any {
+//     if (typeof x == "object") {
+//         let pickedCard = Math.floor(Math.random() * x.length);
+//         return pickedCard;
+//     }
+//     else if (typeof x == "number") {
+//         let pickedSuit = Math.floor(x / 13);
+//         return { suit: suits[pickedSuit], card: x % 13 };
+//     }
+// }
+
+// let myDeck = [{ suit: "diamonds", card: 2 }, { suit: "spades", card: 10 }, { suit: "hearts", card: 4 }];
+// let pickedCard1 = myDeck[pickCard(myDeck)];
+// console.log("card: " + pickedCard1.card + " of " + pickedCard1.suit);
+
+// let pickedCard2 = pickCard(15);
+// console.log("card: " + pickedCard2.card + " of " + pickedCard2.suit);
+
+// class Add {
+//     num: number
+//     constructor(){
+//       this.num = 11;
+//     }
+//     innerAdd(this: Add) {
+//       console.log(this.num)
+//     }
+//   }
+
+// let instanceAdd = new Add()
+// instanceAdd.innerAdd()
+
+
+// function add<F>(num1: F): F {
+//   return num1;
+// }
+// console.log(add('3333'))
+// console.log(add(123))
+// console.log(add({a: 12, b: 'string'}))
+
+
+
+
+// function add<T>(num: T[]): Array<T> {
+//   return num.reverse();
+// }
+
+// let addInstance: <T>(num: Array<T>) => T[] 
+
+// console.log(addInstance)
+
+// let genericsFunction: {<T>(num: T[]): T[]}
+
+// genericsFunction = function(num){return num}
+
+// class GenericsClass<T> {
+//   num: T
+//   addNum: {(num: T): T}
+// }
+
+// let instanceGenericsClass: GenericsClass<number>
+// instanceGenericsClass = new GenericsClass()
+// instanceGenericsClass.num = 2;
+// instanceGenericsClass.addNum = num => {
+//   return num + 1
+// }
+// console.log(instanceGenericsClass.addNum(instanceGenericsClass.num))
+
+
+
+
+
+
+interface Length {
+  length: number;
 }
-console.log(add(1, 1, 1, 1, 1))
-
-let suits = ["hearts", "spades", "clubs", "diamonds"];
-
-function pickCard(x: {suit: string; card: number; }[]): number;
-function pickCard(x: number): {suit: string; card: number; };
-function pickCard(x): any {
-    if (typeof x == "object") {
-        let pickedCard = Math.floor(Math.random() * x.length);
-        return pickedCard;
-    }
-    else if (typeof x == "number") {
-        let pickedSuit = Math.floor(x / 13);
-        return { suit: suits[pickedSuit], card: x % 13 };
-    }
+function add<T extends Length>(num: T): T {
+  return num
 }
 
-let myDeck = [{ suit: "diamonds", card: 2 }, { suit: "spades", card: 10 }, { suit: "hearts", card: 4 }];
-let pickedCard1 = myDeck[pickCard(myDeck)];
-console.log("card: " + pickedCard1.card + " of " + pickedCard1.suit);
+console.log(add({length: 1}))
 
-let pickedCard2 = pickCard(15);
-console.log("card: " + pickedCard2.card + " of " + pickedCard2.suit);
+function getProperty(obj: T, key: K) {
+  return obj[key];
+}
+let x = { a: 1, b: 2, c: 3, d: 4 };
 
-class Add {
-    num: number
-    constructor(){
-      this.num = 11;
-    }
-    innerAdd(this: Add) {
-      console.log(this.num)
-    }
-  }
-
-let instanceAdd = new Add()
-instanceAdd.innerAdd()
-
-
+getProperty(x, "a"); 
+getProperty(x, "m");
