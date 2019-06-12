@@ -245,19 +245,52 @@
 
 
 
-interface Length {
-  length: number;
+// interface Length {
+//   length: number;
+// }
+// function add<T extends Length>(num: T): T {
+//   return num
+// }
+
+// console.log(add({length: 1}))
+
+// function getProperty(obj: T, key: K) {
+//   return obj[key];
+// }
+// let x = { a: 1, b: 2, c: 3, d: 4 };
+
+// getProperty(x, "a"); 
+// getProperty(x, "m");
+
+enum NumberEnum {
+  Zero,
+  One,
+  Two,
+  Three
 }
-function add<T extends Length>(num: T): T {
-  return num
+let one: NumberEnum
+one = NumberEnum.One
+console.log(one)
+
+enum FileAccess {
+  // constant members
+  None,
+  Read = 1 << 1,
+  Write = 1 << 2,
+  ReadWrite = Read | Write,
+  // computed member
+  G = "123".length,
 }
 
-console.log(add({length: 1}))
-
-function getProperty(obj: T, key: K) {
-  return obj[key];
+function f(obj: {Zero: number}) {
+  console.log(obj.Zero + 100)
 }
-let x = { a: 1, b: 2, c: 3, d: 4 };
+f(NumberEnum)
 
-getProperty(x, "a"); 
-getProperty(x, "m");
+
+function spl(template, name, oo) {
+  console.log(template, name)
+}
+let ll = '123'
+
+spl`kkkkk ${ll} l ${'ff'}`
